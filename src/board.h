@@ -9,6 +9,7 @@
 #include <utility>
 #include <vector>
 
+#include "util.h"
 // template <typename T>
 // inline bool contains(const std::vector<T>& vec, const T& item) {
 //     return std::find(vec.begin(), vec.end(), item) != vec.end();
@@ -21,7 +22,10 @@ struct Cell {
 
 class Board {
 public:
-    Board(int r, int c, int m) : rows(r), cols(c), mines(m) {
+    int rows;
+    int cols;
+
+    Board(GameConfig c) : rows(c.rows), cols(c.cols), mines(c.mines) {
         data = new Cell*[rows];
         for (int i = 0; i < rows; i++)
             data[i] = new Cell[cols];
@@ -62,8 +66,6 @@ public:
 
 private:
     Cell** data;
-    int rows;
-    int cols;
     int mines;
 
     inline Cell* at(const std::pair<int, int>& idx) {
