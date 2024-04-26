@@ -33,8 +33,7 @@ public:
         window.draw(sprite);
     }
 
-    bool is_hovered(const sf::RenderWindow& window) const {
-        sf::Vector2i pos = sf::Mouse::getPosition(window);
+    bool is_hovered(const sf::Vector2i& pos) const {
         return sprite.getGlobalBounds().contains(
             static_cast<sf::Vector2f>(pos)
         );
